@@ -7,19 +7,21 @@ use Illuminate\Support\Facades\Log;
 trait OnfonMedia
 {
 
-    protected $api_key;
-    protected $client_id;
-    protected $access_key;
-    protected $api_url;
-    protected $sender_id;
+    public $api_key;
+    public $client_id;
+    public $access_key;
+    public $api_url;
+    public $sender_id;
+    public $endpoint;
 
-    protected $message_parameters;
-    protected $scheduleTime;
-    protected $is_unicode;
-    protected $is_flash;
+    public $message_parameters;
+    public $scheduleTime;
+    public $is_unicode;
+    public $is_flash;
 
-    protected $numbers;
-    protected $message;
+    public $numbers;
+    public $message;
+    public $response;
     public function configOnfon()
     {
         $this->api_key = config('onfonmedia.api_key');
@@ -55,7 +57,7 @@ trait OnfonMedia
     }
     public function sendBulkSms()
     {
-        $endpoint = $this->api_url . config('onfonmedia.endpoints.send_bulk_sms');
+        $this->endpoint = $this->api_url . config('onfonmedia.endpoints.send_bulk_sms');
         $request_body = [
             "SenderId" => $this->sender_id,
             "IsUnicode" => true,
@@ -68,9 +70,13 @@ trait OnfonMedia
             'Content-Type' => 'application/json',
             'AccessKey' => $this->access_key,
         ];
-        $response = Http::withHeaders($headers)->post($endpoint, $request_body);
+        $this->response = Http::withHeaders($headers)->post($this->endpoint, $request_body);
 
-        Log::info($response->json());
+        Log::info($request_body);
+        Log::info($headers);
+        Log::info($this->response->json());
+
+        return $this->response;
 
     }
 }

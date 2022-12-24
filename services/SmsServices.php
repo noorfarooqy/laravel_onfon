@@ -6,24 +6,23 @@ use Noorfarooqy\LaravelOnfon\Traits\OnfonMedia;
 class SmsServices extends DefaultService
 {
     use OnfonMedia;
-    
-    
-    public function __construct($numbers, $message)
+
+    public function __construct($params, array $numbers = [], $message = '', )
     {
         $this->numbers = $numbers;
         $this->message = $message;
+        // $this->setMessageParameters();
+        $this->message_parameters = $params;
+        $this->configOnfon();
     }
 
-    private function setMessageParameters()
-    {
-        $this->message_parameters = [];
+    // public function setMessageParameters()
+    // {
+    //     $this->message_parameters = [];
 
-        foreach ($this->numbers as $key => $number) {
-            $number = $this->formatNumber($number);
-            $this->message_parameters = [
-                'Number' => $number,
-                'Text' => $this->message,
-            ];
-        }
-    }
+    //     foreach ($this->numbers as $key => $number) {
+    //         $number = $this->formatNumber($number);
+    //         $this->message_parameters;
+    //     }
+    // }
 }

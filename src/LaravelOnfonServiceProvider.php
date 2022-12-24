@@ -7,6 +7,9 @@ class LaravelOnfonServiceProvider extends ServiceProvider
 {
     public function boot()
     {
+        $this->publishes([
+            __DIR__ . '/../config/onfonmedia.php' => config_path('onfonmedia.php'),
+        ], 'onfon.config');
 
     }
 

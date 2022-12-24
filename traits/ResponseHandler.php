@@ -4,7 +4,7 @@ namespace Noorfarooqy\LaravelOnfon\Traits;
 trait ResponseHandler
 {
     use ErrorHandler;
-    public function getResponse($data = [])
+    public function getResponse($data = []) : object
     {
         return response()->json([
             'error_code' => $this->getErrorCode(),

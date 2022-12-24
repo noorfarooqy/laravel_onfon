@@ -3,10 +3,10 @@ namespace Noorfarooqy\LaravelOnfon\Traits;
 
 use Illuminate\Support\Facades\Validator;
 
-trait RequestHandler 
+trait RequestHandler
 {
     use ErrorHandler;
-    
+
     protected $rules;
     protected $request;
     protected $validator;
@@ -20,7 +20,7 @@ trait RequestHandler
         $this->setError($this->validator->errors()->first());
     }
 
-    public function validatedData()
+    public function validatedData(): array
     {
         return $this->validator->validated();
     }
