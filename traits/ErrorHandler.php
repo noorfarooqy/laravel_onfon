@@ -12,7 +12,7 @@ trait ErrorHandler
     public function setError(string $error, $error_code = '_001')
     {
         $this->error_message = $error;
-        $this->error_code =  $error_code;
+        $this->error_code = $error_code;
         $this->error_description = $this->getErrorDescription();
     }
     public function setStatus(int $status)
@@ -31,7 +31,7 @@ trait ErrorHandler
 
     public function getMessage(): string
     {
-        return $this->error_message;
+        return $this->error_message ?? '';
     }
     public function getStatus(): int
     {
