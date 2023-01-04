@@ -8,10 +8,10 @@ trait ResponseHandler
     {
         return response()->json([
             'error_code' => $this->getErrorCode(),
+            'error_message' => $this->getMessage(),
             'error_description' => $this->getErrorDescription(),
             'status' => $this->getStatus(),
             'success_message' => $this->getSuccessMessage(),
-            'error_message' => $this->getErrorMessage(),
             'data' => $data,
         ], $this->getStatus());
 
