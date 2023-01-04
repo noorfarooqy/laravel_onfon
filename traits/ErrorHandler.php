@@ -9,20 +9,20 @@ trait ErrorHandler
     private $status = 200;
     private $error_code = 0;
     private $success_message = '';
-    public function setError(string $error, $error_code = '_001')
+    public function setError(string $error, $error_code = '_001', $error_descriptions = [])
     {
         $this->error_message = $error;
         $this->error_code = $error_code;
-        $this->error_description = $this->getErrorDescription();
+        $this->error_description = $this->getErrorDescription($error_descriptions);
     }
     public function setStatus(int $status)
     {
         $this->status = $status;
     }
 
-    public function getErrorDescription()
+    public function getErrorDescription($error_descriptions = [])
     {
-        return ErrorCodes::getErrorDescription($this->error_code);
+        return ErrorCodes::getErrorDescription($this->error_code, $error_descriptions);
     }
     public function getErrorCode()
     {
