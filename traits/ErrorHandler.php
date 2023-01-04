@@ -5,10 +5,10 @@ use Noorfarooqy\LaravelOnfon\Contracts\ErrorCodes;
 
 trait ErrorHandler
 {
-    private $error_message;
-    private $status;
+    private $error_message = '';
+    private $status = 200;
     private $error_code = 0;
-    private $success_message;
+    private $success_message = '';
     public function setError(string $error, $error_code = '_001')
     {
         $this->error_message = $error;
