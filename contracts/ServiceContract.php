@@ -16,5 +16,5 @@ interface ServiceContract
     public function validatedData(): array;
     public function setResponseType();
 
-    public function getResponse(array $data): object;
+    public function getResponse($data): object;
 }
