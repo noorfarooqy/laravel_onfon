@@ -2,7 +2,6 @@
 namespace Noorfarooqy\LaravelOnfon\Traits;
 
 use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Log;
 
 trait OnfonMedia
 {
@@ -72,9 +71,9 @@ trait OnfonMedia
         ];
         $this->response = Http::withHeaders($headers)->post($this->endpoint, $request_body);
 
-        Log::info($request_body);
-        Log::info($headers);
-        Log::info($this->response->json());
+        // Log::info($request_body);
+        // Log::info($headers);
+        // Log::info($this->response->json());
 
         return $this->response;
 
