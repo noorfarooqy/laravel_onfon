@@ -71,10 +71,6 @@ trait OnfonMedia
         ];
         $this->response = Http::withHeaders($headers)->post($this->endpoint, $request_body);
 
-        // Log::info($request_body);
-        // Log::info($headers);
-        // Log::info($this->response->json());
-
         return $this->response;
 
     }
