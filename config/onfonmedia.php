@@ -25,5 +25,8 @@ return [
         'send_sms' => 'SendSMS',
         'send_bulk_sms' => 'SendBulkSMS',
         'dlr_url' => env('APP_DLR_URL', env('APP_URL')) . '/notifications/onfon/dlr',
+        //v2
+        'auth_url' => '/v1/authorization',
+        'send_sms_v2' => 'v2_send',
     ],
 ];

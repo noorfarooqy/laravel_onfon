@@ -1,4 +1,5 @@
 <?php
+
 namespace Noorfarooqy\LaravelOnfon\Traits;
 
 use Illuminate\Support\Facades\Http;
@@ -33,7 +34,7 @@ trait OnfonMedia
     public function formatNumber($number)
     {
         $len = strlen($number);
-        if ($len != 10 && $len = 9 && $len != 12&$len != 13) {
+        if ($len != 10 && $len = 9 && $len != 12 & $len != 13) {
             $this->setError($m = 'The number is not valid');
             return $number;
         }
@@ -72,6 +73,25 @@ trait OnfonMedia
         $this->response = Http::withHeaders($headers)->post($this->endpoint, $request_body);
 
         return $this->response;
+    }
+    public function sendBulkSmsV2($to, $from, $content)
+    {
+        $this->endpoint = $this->api_url . config('onfonmedia.endpoints.send_bulk_sms');
+        $request_body = [
+            "to" => $to,
+            "from" => $from,
+            "content" => $content,
+            "dlr" => 'yes',
+            "dlr-url" => $this->dlr_url ?? '',
+            "dlr-level" => 1,
+        ];
+        $headers = [
+            'Content-Type' => 'application/json',
+            'Authorization ' => $this->access_key,
+            'Accept' => 'application/json'
+        ];
+        $this->response = Http::withHeaders($headers)->post($this->endpoint, $request_body);
 
+        return $this->response;
     }
 }
