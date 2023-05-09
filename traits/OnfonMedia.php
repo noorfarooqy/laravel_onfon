@@ -75,7 +75,7 @@ trait OnfonMedia
 
         return $this->response;
     }
-    public function sendBulkSmsV2($to, $from, $content)
+    public function sendBulkSmsV2($to, $content)
     {
         $this->endpoint = $this->api_url . config('onfonmedia.endpoints.send_sms_v2');
         if (env('APP_DEBUG')) {
@@ -83,7 +83,7 @@ trait OnfonMedia
         }
         $request_body = [
             "to" => $to,
-            "from" => $from,
+            "from" => $this->sender_id,
             "content" => $content,
             "dlr" => 'yes',
             "dlr-url" => $this->dlr_url ?? '',
