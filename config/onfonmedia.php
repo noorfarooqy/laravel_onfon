@@ -6,6 +6,7 @@ return [
     'access_key' => env('ONFON_API_ACCESS_KEY'),
     'api_url' => env('ONFON_API_URL'),
     'sender_id' => env('ONFON_SENDER_ID'),
+    'dlr_url' => env('ONFON_DELIVER_URL'),
 
     'endpoints' => [
         'get_balance' => 'Balance',

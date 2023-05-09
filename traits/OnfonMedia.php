@@ -23,6 +23,7 @@ trait OnfonMedia
     public $numbers;
     public $message;
     public $response;
+    public $dlr_url;
     public function configOnfon()
     {
         $this->api_key = config('onfonmedia.api_key');
@@ -30,6 +31,7 @@ trait OnfonMedia
         $this->sender_id = config('onfonmedia.sender_id');
         $this->access_key = config('onfonmedia.access_key');
         $this->api_url = config('onfonmedia.api_url');
+        $this->dlr_url = config('onfonmedia.dlr_url');
     }
 
     public function formatNumber($number)
@@ -86,7 +88,7 @@ trait OnfonMedia
             "from" => $this->sender_id,
             "content" => $content,
             "dlr" => 'yes',
-            "dlr-url" => $this->dlr_url ?? '',
+            "dlr-url" => $this->dlr_url ?? env('APP_URL') . '/delivery',
             "dlr-level" => 1,
         ];
         $headers = [
