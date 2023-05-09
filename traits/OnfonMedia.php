@@ -87,7 +87,7 @@ trait OnfonMedia
         ];
         $headers = [
             'Content-Type' => 'application/json',
-            'Authorization ' => $this->access_key,
+            'Authorization' => "Bearer $this->access_key",
             'Accept' => 'application/json'
         ];
         $this->response = Http::withHeaders($headers)->post($this->endpoint, $request_body);
