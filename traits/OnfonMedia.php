@@ -3,6 +3,7 @@
 namespace Noorfarooqy\LaravelOnfon\Traits;
 
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 
 trait OnfonMedia
 {
@@ -76,7 +77,10 @@ trait OnfonMedia
     }
     public function sendBulkSmsV2($to, $from, $content)
     {
-        $this->endpoint = $this->api_url . config('onfonmedia.endpoints.send_bulk_sms');
+        $this->endpoint = $this->api_url . config('onfonmedia.endpoints.send_sms_v2');
+        if (env('APP_DEBUG')) {
+            Log::info($this->endpoint);
+        }
         $request_body = [
             "to" => $to,
             "from" => $from,
