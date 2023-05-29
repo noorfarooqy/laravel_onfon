@@ -9,7 +9,7 @@ trait ResponseHandler
         return response()->json($this->getPlainResponse($data), $this->getStatus());
 
     }
-    public function getPlainResponse($data = []) : object
+    public function getPlainResponse($data = []) : array
     {
         return [
             'error_code' => $this->getErrorCode(),
