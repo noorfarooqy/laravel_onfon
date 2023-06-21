@@ -60,7 +60,7 @@ trait OnfonMedia
     }
     public function sendBulkSms()
     {
-        $this->endpoint = $this->api_url . config('onfonmedia.endpoints.send_bulk_sms');
+        $this->endpoint = $this->api_urlv2 . config('onfonmedia.endpoints.send_bulk_sms');
         $request_body = [
             "SenderId" => $this->sender_id,
             "IsUnicode" => true,
