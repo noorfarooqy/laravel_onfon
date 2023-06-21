@@ -32,7 +32,7 @@ trait OnfonMedia
         $this->sender_id = config('onfonmedia.sender_id');
         $this->access_key = config('onfonmedia.access_key');
         $this->api_url = config('onfonmedia.api_url');
-        $this->$api_urlv2 = config('onfonmedia.api_urlv2');
+        $this->api_urlv2 = config('onfonmedia.api_urlv2');
         $this->dlr_url = config('onfonmedia.dlr_url');
     }
 
