@@ -5,6 +5,7 @@ return [
     'client_id' => env('ONFON_API_CLIENT_ID'),
     'access_key' => env('ONFON_API_ACCESS_KEY'),
     'api_url' => env('ONFON_API_URL'),
+    'api_urlv2' => env('ONFON_API_URL_V2','https://api.onfonmedia.co.ke/'),
     'sender_id' => env('ONFON_SENDER_ID'),
     'dlr_url' => env('ONFON_DELIVER_URL'),
 
